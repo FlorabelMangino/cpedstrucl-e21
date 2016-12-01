@@ -1,4 +1,3 @@
-//MANGINO
 #include <iostream>
 using namespace std;
 
@@ -18,7 +17,7 @@ class Stack {
   }
   
   int pop() {
-  	cout << "Pop: \n";
+  	cout << "Pop \n";
     if (top == 0) 
 		return -1;
     return s[--top];
@@ -44,33 +43,51 @@ class Stack {
   int maxelem;
 };
 
-int main() {
-  Stack * s = new Stack(100);
+void menu(){
+	int choice;
+	
+	cout << "What would you like to do?: \n";
+	cout << "1: Push \n";
+	cout << "2: Pop \n";
+	cout << "3: Display \n";
+	cout << "4: Exit \n";
+	
+	
+}
 
-  s -> display();
-  s -> push(1);
-  s -> display();
-  s -> push(2);
-  s -> display();
-  s -> push(3);
-  s -> display();
-  s -> push(4);
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> push(10);
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  s -> pop();
-  s -> display();
-  return 1;
+int main() {
+   
+  int choice,pushn;
+  Stack * s = new Stack(100);
+  
+ while(1){
+ 
+  menu();
+  cin>>choice;
+
+  	 
+  if (choice ==1){
+  	cout<< "Enter number you like to push: ";
+  	cin>>pushn;
+  	 s -> push(pushn);
+  	cout<<"\n";
+  }
+  
+  if (choice ==2){
+  	s -> pop();
+  	cout<<"\n";
+  }
+  
+  if (choice ==3){
+  	 s -> display();
+  	cout<<"\n";
+  }
+  
+  if (choice ==4){
+  	return 0;
+  }
+  
+}
+
+
 }
