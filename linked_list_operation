@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include<stdlib.h>
 #include<conio.h>
@@ -7,6 +8,7 @@ using namespace std;
 struct node {
 	int data;
 	struct node * next;
+	struct node * prev;
 } *head;
   
 int count() {
@@ -68,12 +70,13 @@ void search(int num){
   while (n != NULL) {
   	if(n->data == num)
   	{
-  		cout<<"Location: "<< c<<endl;
+  		cout<<"Location: "<< c <<endl;
 	  }
     n = n -> next;
     c++;
 
 }}
+
 int delete_val(int num) {
   struct node * temp, * prev;
   temp = head;
@@ -109,7 +112,6 @@ void delete_all(int num) {
 }}
 
 
-
 void insert(int num) {
   int c = 0;
   struct node * temp;
@@ -122,15 +124,12 @@ void insert(int num) {
         c++;
       temp = temp -> next;
     }
-    if (c == 0)
+    if (head == 0)
       add(num);
- //   else if (c < count())
-   //   addafter(num, ++c);
     else
       append(num);
   }
 }
-
 
 
 void display(struct node * r) {
@@ -145,6 +144,11 @@ void display(struct node * r) {
   printf("\n");
 }
 
+void reverse(int num){
+	
+}
+
+
 int main() {
   int i, num,c, loc;
   struct node * n;
@@ -152,7 +156,7 @@ int main() {
   
   
   while (1) {
-  //	system("cls");
+  	system("cls");
     cout<<"Linked List Operations\n"
     	<<"=============================\n"
    		<<"[1] INSERT\n"
@@ -219,7 +223,7 @@ int main() {
     	case 8:
     		break;
     		
-    	case 9: cout<< " Enter Value: ";
+    	case 9: cout<< "Enter Value: ";
     			cin>>num;
     			search(num);
     		break;
