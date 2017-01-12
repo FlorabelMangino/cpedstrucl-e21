@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include<stdlib.h>
 #include<conio.h>
@@ -84,7 +83,6 @@ int delete_val(int num) {
     if (temp -> data == num) {
       if (temp == head) {
         head = temp -> next;
-        free(temp);
         return 1;
       } else {
         prev -> next = temp -> next;
@@ -103,30 +101,22 @@ void delete_all(int num) {
   int c = 1;
    n = head;
   while (n != NULL) {
-  	if(n->data == num)
-  	{
   	delete_val(num);
-	  }
     n = n -> next;
     c++;
-}}
+}
+}
 
 
 void insert(int num) {
-  int c = 0;
   struct node * temp;
   temp = head;
   if (temp == NULL) {
     add(num);
   } else {
     while (temp != NULL) {
-      if (temp -> data <= num)
-        c++;
       temp = temp -> next;
     }
-    if (head == 0)
-      add(num);
-    else
       append(num);
   }
 }
@@ -142,10 +132,6 @@ void display(struct node * r) {
     r = r -> next;
   }
   printf("\n");
-}
-
-void reverse(int num){
-	
 }
 
 
