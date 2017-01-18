@@ -10,6 +10,129 @@ struct node {
 	struct node * prev;
 } *head;
   
+int count();
+void append(int);
+void add(int);
+void addafter(int,int);
+void search(int);
+int delete_val(int);
+void reverse(struct node **head);
+void delete_all(int);
+void insert(int);
+void display(struct node*head);
+
+
+int main() {
+  int i, num,c, loc;
+  struct node * n;
+  head = NULL;
+  
+  
+  while (1) {
+  	system("cls");
+    cout<<"Linked List Operations\n"
+    	<<"=============================\n"
+   		<<"[1] INSERT\n"
+    	<<"[2] ADD AT THE BEGINNING\n"
+    	<<"[3] ADD AFTER\n"
+   		<<"[4] DELETE\n"
+    	<<"[5] DELETE ALL\n"
+    	<<"[6] DISPLAY\n"
+    	<<"[7] COUNT\n"
+    	<<"[8] REVERSE\n"
+    	<<"[9] SEARCH\n"
+    	<<"[10] EXIT\n"
+    	<<"=============================\n"
+    	<<"Enter your choice : ";
+    cin>>i;
+    if  (i<=0){
+    	cout<<"INPUT ONLY INTEGER!\n";
+    	exit(0);
+	}
+	else{
+	
+    switch(i){
+    	case 1: cout<<"Insert value: ";
+    			cin>>num;
+    			insert(num);
+    		break;
+    		
+    	case 2: cout<< "Enter Value: ";
+    			cin>>num;
+    			cout<< "Enter Location: ";
+    			cin>>loc;
+    		break;
+    		
+    	case 3: cout<< "Enter Value: ";
+    			cin>>num;
+    			cout<< "Enter Location: ";
+    			cin>>loc;
+    			addafter(num,loc);
+    		break;
+    		
+    	case 4: if (head == NULL) {
+          cout<<"List is Empty\n";
+        } 
+		else {cout<< "Enter Value: ";
+    			cin>>num;
+        }
+		delete_val(num);
+    		break;
+    		
+    	case 5: if (head == NULL) {
+          cout<<"List is Empty\n";
+        } 
+		else {cout<< " Enter Value: ";
+    			cin>>num;
+        }
+    	delete_all(num);
+    		break;
+    		
+    	case 6:if (head == NULL) {
+          cout<<"List is Empty\n";
+        } 
+		else {
+          cout<<"Element(s) in the list are : ";
+        }
+        display(n);
+    		break;
+    		
+    	case 7: cout<<"Number of Elements: ";
+    			cout<<count();
+    		break;
+    		
+    	case 8: if (head == NULL) {
+          cout<<"List is Empty\n";
+        } 
+		else {
+          cout<<"Element(s) in the list are : ";
+        }
+        reverse(&head);
+        display(n);
+    		break;
+    		
+    	case 9: if (head == NULL) {
+          cout<<"List is Empty\n";
+        } 
+		else {
+          cout<< "Enter Value: ";
+    	  cin>>num;
+        }
+        search(num);	
+    		break;
+    		
+    	case 10: exit(0);
+    		break;
+    		
+    	default:	
+    		cout<<"Wrong Input!\n";
+    										
+	}
+	getch();
+}
+}
+}
+
 int count() {
   struct node * n;
   int c = 0;
@@ -76,6 +199,19 @@ void search(int num){
 
 }}
 
+void insert(int num) {
+  struct node * temp;
+  temp = head;
+  if (temp == NULL) {
+    add(num);
+  } else {
+    while (temp != NULL) {
+      temp = temp -> next;
+    }
+      append(num);
+  }
+}
+
 int delete_val(int num) {
   struct node * temp, * prev;
   temp = head;
@@ -108,19 +244,19 @@ void delete_all(int num) {
 }
 
 
-void insert(int num) {
-  struct node * temp;
-  temp = head;
-  if (temp == NULL) {
-    add(num);
-  } else {
-    while (temp != NULL) {
-      temp = temp -> next;
+void reverse(struct node** head_ref) {
+    struct node* prev   = NULL;
+    struct node* current = *head_ref;
+    struct node* next;
+    while (current != NULL)
+    {
+        next  = current->next;  
+        current->next = prev;   
+        prev = current;
+        current = next;
     }
-      append(num);
-  }
+    *head_ref = prev;
 }
-
 
 void display(struct node * r) {
   r = head;
@@ -134,94 +270,3 @@ void display(struct node * r) {
   printf("\n");
 }
 
-
-int main() {
-  int i, num,c, loc;
-  struct node * n;
-  head = NULL;
-  
-  
-  while (1) {
-  	system("cls");
-    cout<<"Linked List Operations\n"
-    	<<"=============================\n"
-   		<<"[1] INSERT\n"
-    	<<"[2] ADD AT THE BEGINNING\n"
-    	<<"[3] ADD AFTER\n"
-   		<<"[4] DELETE\n"
-    	<<"[5] DELETE ALL\n"
-    	<<"[6] DISPLAY\n"
-    	<<"[7] COUNT\n"
-    	<<"[8] REVERSE\n"
-    	<<"[9] SEARCH\n"
-    	<<"[10] EXIT\n"
-    	<<"=============================\n"
-    	<<"Enter your choice : ";
-    cin>>i;
-    if  (i<=0){
-    	cout<<"INPUT ONLY INTEGER!\n";
-    	exit(0);
-	}
-	else{
-	
-    switch(i){
-    	case 1: cout<<"Insert value: ";
-    			cin>>num;
-    			insert(num);
-    		break;
-    		
-    	case 2: cout<< "Enter Value: ";
-    			cin>>num;
-    			cout<< "Enter Location: ";
-    			cin>>loc;
-    		break;
-    		
-    	case 3: cout<< "Enter Value: ";
-    			cin>>num;
-    			cout<< "Enter Location: ";
-    			cin>>loc;
-    			addafter(num,loc);
-    		break;
-    		
-    	case 4: cout<< "Enter Value: ";
-    			cin>>num;
-    			delete_val(num);
-    		break;
-    		
-    	case 5: cout<< " Enter Value: ";
-    			cin>>num;
-    			delete_all(num);
-    		break;
-    		
-    	case 6:if (head == NULL) {
-          cout<<"List is Empty\n";
-        } 
-		else {
-          cout<<"Element(s) in the list are : ";
-        }
-        display(n);
-    		break;
-    		
-    	case 7: cout<<"Number of Elements: ";
-    			cout<<count();
-    		break;
-    		
-    	case 8:
-    		break;
-    		
-    	case 9: cout<< "Enter Value: ";
-    			cin>>num;
-    			search(num);
-    		break;
-    		
-    	case 10: exit(0);
-    		break;
-    		
-    	default:	
-    		cout<<"Wrong Input!\n";
-    										
-	}
-	getch();
-}
-}
-}
