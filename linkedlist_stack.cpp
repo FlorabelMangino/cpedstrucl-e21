@@ -72,10 +72,11 @@ int main()
 			cout<<"Enter a number:";
 			cin>>number;
 			list.addValue(number);
+			cout<< number<< " added successfully"<<endl;
 			break;
 			
 		case 2:
-		list.popValue();
+		cout<<list.popValue()<<" Pop successful"<<endl;
 		break;
 		
 		case 3:
