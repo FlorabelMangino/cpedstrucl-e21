@@ -19,9 +19,33 @@ public:
         n->x = number;             
         n->next = head;         
                                
-        head = n;    	
+        head = n;    
+		
+		          
     }
-	
+
+    int popValue(){
+        Node *n = head;
+        int ret = n->x;
+
+        head = head->next;
+        delete n;
+        return ret;
+    }
+    
+    void display(){
+    temp=head;
+    while(head!=0){
+  	
+    Node *n = head;
+    int ret = n->x;
+    head = head->next;
+  	
+    cout<<ret<<endl;
+    }
+    
+    head=temp;
+	}
     
 private:
     Node *head; 
@@ -49,16 +73,18 @@ int main()
 			cin>>number;
 			list.addValue(number);
 			break;
+			
 		case 2:
-	//	list.popValue();
+		list.popValue();
 		break;
 		
 		case 3:
-	//	list.display();
+		list.display();
 		break;
 		
 		case 4:
 			exit(1);
+							
 	}
 	getch();
 	}	
